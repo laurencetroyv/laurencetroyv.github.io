@@ -21,7 +21,8 @@ export default defineNuxtConfig({
   css: ["~/assets/css/main.css"],
 
   runtimeConfig: {
-    appEnv: process.env.NUXT_NODE_ENV,
+    appEnv: process.env.NUXT_PUBLIC_NODE_ENV,
+    umamiWebsiteId: process.env.NUXT_UMAMI_WEBSITE_ID,
     formSubmit: process.env.NUXT_FORMSUBMIT,
   },
 
