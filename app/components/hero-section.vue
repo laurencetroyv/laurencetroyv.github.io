@@ -15,7 +15,7 @@
         <div class="mb-8">
           <div class="relative inline-block">
             <img
-              src="https://avatars.githubusercontent.com/u/12975712?v=4"
+              src="https://github.com/laurencetroyv.png"
               alt="Laurence Troy V"
               class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover mx-auto shadow-2xl ring-4 ring-primary-400/20"
               loading="eager"
@@ -50,14 +50,14 @@
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <PrimevueButton
             label="View Portfolio"
-            class="p-button-lg bg-gradient-to-r from-primary-500 to-blue-500 hover:from-primary-600 hover:to-blue-600 border-0 px-8 py-3 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+            class="h-14 p-button-lg bg-gradient-to-r from-primary-500 to-blue-500 hover:from-primary-600 hover:to-blue-600 border-0 px-8 py-3 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
             @click="scrollToSection('portfolio')"
           />
 
           <PrimevueButton
             label="Download Resume"
             icon="pi pi-download"
-            class="p-button-outlined p-button-lg border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-white px-8 py-3 font-semibold rounded-lg transition-all duration-300"
+            class="h-14 p-button-outlined p-button-lg border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-white px-8 py-3 font-semibold rounded-lg transition-all duration-300"
             @click="downloadResume"
           />
         </div>
@@ -68,19 +68,6 @@
             <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
             Available for new opportunities
           </span>
-        </div>
-
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <div
-            class="flex flex-col items-center text-slate-400 hover:text-primary-400 transition-colors duration-300 cursor-pointer"
-            @click="scrollToSection('overview')"
-          >
-            <span class="text-sm mb-2 font-medium">Explore</span>
-            <div class="w-6 h-10 border-2 border-current rounded-full flex justify-center">
-              <div class="w-1 h-3 bg-current rounded-full mt-2 animate-bounce" />
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -94,15 +81,13 @@ const currentTextIndex = ref(0)
 const isDeleting = ref(false)
 
 const texts = [
-  "Full Stack Developer",
-  "Mobile App Developer",
-  "Cloud Engineer",
-  "Vue.js Specialist",
-  "Laravel Expert",
+  "Flutter Developer",
+  "Vue.js Developer",
+  "Laravel Developer",
 ]
 
 const yearsOfExperience = computed(() => {
-  const startYear = 2019 // Adjust based on when you started
+  const startYear = 2024
   return new Date().getFullYear() - startYear
 })
 
@@ -110,7 +95,7 @@ const typeWriter = () => {
   const currentText = texts[currentTextIndex.value]
 
   if (isDeleting.value) {
-    displayedText.value = currentText.substring(0, currentIndex.value - 1)
+    displayedText.value = currentText?.substring(0, currentIndex.value - 1) ?? ""
     currentIndex.value--
 
     if (currentIndex.value === 0) {
@@ -123,10 +108,10 @@ const typeWriter = () => {
     }
   }
   else {
-    displayedText.value = currentText.substring(0, currentIndex.value + 1)
+    displayedText.value = currentText?.substring(0, currentIndex.value + 1) ?? ""
     currentIndex.value++
 
-    if (currentIndex.value === currentText.length) {
+    if (currentIndex.value === currentText?.length) {
       setTimeout(() => {
         isDeleting.value = true
         typeWriter()
@@ -138,7 +123,7 @@ const typeWriter = () => {
   }
 }
 
-const scrollToSection = (sectionId) => {
+const scrollToSection = (sectionId: string) => {
   const element = document.getElementById(sectionId)
   if (element) {
     element.scrollIntoView({
@@ -160,16 +145,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* Additional animations and effects */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
 /* Button hover effects */
 :deep(.p-button:hover) {
   transform: translateY(-2px);
