@@ -5,7 +5,11 @@ import tailwindcss from "@tailwindcss/vite"
 export default defineNuxtConfig({
 
   modules: ["@primevue/nuxt-module", "@nuxt/eslint"],
+
+  ssr: false,
+
   devtools: { enabled: true },
+
   app: {
     head: {
       script: [{
