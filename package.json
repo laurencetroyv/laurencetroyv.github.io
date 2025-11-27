@@ -11,12 +11,12 @@
     "lint:fix": "eslint ./app --fix"
   },
   "dependencies": {
-    "@primeuix/themes": "^1.2.3",
+    "@primeuix/themes": "^2.0.1",
     "@primevue/forms": "^4.3.7",
     "@tailwindcss/vite": "^4.1.12",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
-    "nuxt": "^4.0.3",
+    "nuxt": "^4.2.1",
     "primeicons": "^7.0.0",
     "primevue": "^4.3.7",
     "tailwindcss": "^4.1.12",
@@ -25,7 +25,7 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
-    "@nuxt/eslint": "1.9.0",
+    "@nuxt/eslint": "1.11.0",
     "@primevue/nuxt-module": "^4.3.7",
     "eslint": "^9.0.0",
     "eslint-plugin-perfectionist": "^4.15.0",
