@@ -32,6 +32,7 @@
                 </label>
                 <PrimevueInputText
                   id="name"
+                  name="name"
                   placeholder="John Doe"
                   fluid
                   class="bg-slate-800/50 border-slate-700 text-slate-50 placeholder-slate-400 focus:border-primary-400 focus:shadow-lg focus:shadow-primary-400/20"
@@ -57,6 +58,7 @@
                 <PrimevueInputText
                   id="email"
                   type="email"
+                  name="email"
                   placeholder="john@example.com"
                   fluid
                   class="bg-slate-800/50 border-slate-700 text-slate-50 placeholder-slate-400 focus:border-primary-400 focus:shadow-lg focus:shadow-primary-400/20"
@@ -82,6 +84,7 @@
               </label>
               <PrimevueInputText
                 id="subject"
+                name="subject"
                 class="bg-slate-800/50 border-slate-700 text-slate-50 placeholder-slate-400 focus:border-primary-400 focus:shadow-lg focus:shadow-primary-400/20"
                 placeholder="Project inquiry, collaboration, etc."
                 fluid
@@ -98,6 +101,7 @@
               </label>
               <PrimevueTextarea
                 id="message"
+                name="message"
                 placeholder="Tell me about your project, timeline, and requirements..."
                 rows="6"
                 class="bg-slate-800/50 border-slate-700 text-slate-50 placeholder-slate-400 focus:border-primary-400 focus:shadow-lg focus:shadow-primary-400/20 resize-none"
@@ -138,7 +142,7 @@
           </div>
 
           <div class="space-y-6">
-            <a
+            <NuxtLink
               href="mailto:laurencetroyv@gmail.com"
               class="flex items-center gap-4 p-4 bg-slate-800/50 rounded-2xl hover:bg-slate-800 transition-colors duration-300 group"
             >
@@ -149,7 +153,7 @@
                 <h4 class="font-semibold text-slate-50">Email</h4>
                 <p class="text-slate-400 text-sm">laurencetroyv@gmail.com</p>
               </div>
-            </a>
+            </NuxtLink>
 
             <a
               href="https://linkedin.com/in/laurencetroyv"
@@ -196,7 +200,7 @@
                 label="View Online"
                 icon="pi pi-external-link"
                 class="p-button-text text-slate-400 hover:text-primary-300"
-                @click="viewResume"
+                @click="openResume"
               />
             </div>
           </div>
@@ -267,6 +271,7 @@ const initialValues = ref({
   name: "",
   email: "",
   subject: "",
+  message: "",
 })
 
 const resolver = zodResolver(schema)
@@ -287,7 +292,7 @@ async function onSubmit(event: FormSubmitEvent) {
 
     const config = useRuntimeConfig()
 
-    await $fetch(config.formSubmit, {
+    await $fetch(config.public.formSubmit, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -300,21 +305,15 @@ async function onSubmit(event: FormSubmitEvent) {
         _captcha: "true",
       }),
     })
+
+    notifySuccess("Form submit successfully")
   }
   catch (error) {
     console.error("Error submitting form:", error)
-    alert("Sorry, there was an error sending your message. Please try again or email me directly.")
+    notifyError("Error submitting form", "Sorry, there was an error sending your message. Please try again or email me directly.")
   }
   finally {
     isSubmitting.value = false
   }
-}
-
-const downloadResume = () => {
-  window.open("/resume.pdf", "_blank")
-}
-
-const viewResume = () => {
-  window.open("/resume.pdf", "_blank")
 }
 </script>

@@ -4,5 +4,6 @@
     <slot />
     <ContactFooter />
     <PrimevueScrollTop />
+    <PrimevueToast position="top-right" />
   </div>
 </template>

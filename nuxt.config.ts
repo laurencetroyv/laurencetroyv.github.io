@@ -31,7 +31,9 @@ export default defineNuxtConfig({
   css: ["~/assets/css/main.css"],
 
   runtimeConfig: {
-    formSubmit: "",
+    public: {
+      formSubmit: "",
+    },
   },
 
   compatibilityDate: "2025-07-15",
