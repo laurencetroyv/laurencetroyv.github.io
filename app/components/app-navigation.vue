@@ -37,7 +37,7 @@
       </div>
     </div>
 
-    <PrimevueSidebar
+    <PrimevueDrawer
       v-model:visible="mobileMenuOpen"
       position="left"
       class="p-sidebar-md bg-slate-900 border-slate-800"
@@ -59,7 +59,7 @@
           {{ item.label }}
         </a>
       </div>
-    </PrimevueSidebar>
+    </PrimevueDrawer>
   </nav>
 </template>
 
