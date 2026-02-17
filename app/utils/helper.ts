@@ -15,3 +15,7 @@ export function scrollToSection(sectionId: string) {
     })
   }
 }
+
+export function yearsExperience() {
+  return new Date().getFullYear() - 2023
+}
