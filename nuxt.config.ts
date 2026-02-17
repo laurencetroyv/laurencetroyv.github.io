@@ -8,6 +8,23 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     head: {
+      title: "Laurence Troy V - Full Stack Developer | Mobile App Developer",
+      meta: [
+        {
+          name: "description",
+          content: "Experienced Full Stack Developer specializing in Vue.js, React, Flutter, and cloud technologies. Based in Cagayan de Oro, Philippines. Available for freelance projects and full-time opportunities.",
+        },
+        {
+          name: "viewport",
+          content: "width=device-width, initial-scale=1",
+        },
+      ],
+      link: [
+        {
+          rel: "canonical",
+          href: "https://laurencetroyv.dev",
+        },
+      ],
       script: [{
         "src": "https://cloud.umami.is/script.js",
         "async": true,
@@ -21,8 +38,7 @@ export default defineNuxtConfig({
   css: ["~/assets/css/main.css"],
 
   runtimeConfig: {
-    appEnv: process.env.NUXT_NODE_ENV,
-    formSubmit: process.env.NUXT_FORMSUBMIT,
+    formSubmit: "",
   },
 
   compatibilityDate: "2025-07-15",
