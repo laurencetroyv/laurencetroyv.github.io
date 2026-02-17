@@ -1,9 +1,10 @@
 <template>
-  <div class="bg-slate-900 border-t border-slate-800">
-    <!-- Main Contact Section -->
+  <footer
+    id="contact"
+    class="bg-slate-900 border-t border-slate-800"
+  >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-        <!-- Contact Form -->
         <div class="space-y-8">
           <div>
             <h2 class="text-3xl md:text-4xl font-bold text-slate-50 mb-4">
@@ -14,9 +15,12 @@
             </p>
           </div>
 
-          <form
+          <PrimevueForm
+            v-slot="$form"
+            :initial-values="initialValues"
+            :resolver="resolver"
             class="space-y-6"
-            @submit.prevent="submitForm"
+            @submit="onSubmit"
           >
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
@@ -24,20 +28,23 @@
                   for="name"
                   class="block text-sm font-medium text-slate-300 mb-2"
                 >
-                  Your Name *
+                  Your Name <span class="text-red-400">*</span>
                 </label>
                 <PrimevueInputText
                   id="name"
-                  v-model="form.name"
                   placeholder="John Doe"
                   fluid
-                  class="bg-slate-800/50 border-slate-700 text-slate-50 placeholder-slate-400 hover:border-primary-400 hover:shadow-lg hover:shadow-primary-400/20"
+                  class="bg-slate-800/50 border-slate-700 text-slate-50 placeholder-slate-400 focus:border-primary-400 focus:shadow-lg focus:shadow-primary-400/20"
                   required
                 />
-                <small
-                  v-if="errors.name"
-                  class="text-red-400 mt-1 block"
-                >{{ errors.name }}</small>
+                <PrimevueMessage
+                  v-if="$form.name?.invalid"
+                  severity="error"
+                  size="small"
+                  variant="simple"
+                >
+                  {{ $form.name?.error.message }}
+                </primevuemessage>
               </div>
 
               <div>
@@ -45,21 +52,24 @@
                   for="email"
                   class="block text-sm font-medium text-slate-300 mb-2"
                 >
-                  Email Address *
+                  Email Address <span class="text-red-400">*</span>
                 </label>
                 <PrimevueInputText
                   id="email"
-                  v-model="form.email"
                   type="email"
                   placeholder="john@example.com"
                   fluid
-                  :class="{ 'p-invalid': errors.email }"
+                  class="bg-slate-800/50 border-slate-700 text-slate-50 placeholder-slate-400 focus:border-primary-400 focus:shadow-lg focus:shadow-primary-400/20"
                   required
                 />
-                <small
-                  v-if="errors.email"
-                  class="text-red-400 mt-1 block"
-                >{{ errors.email }}</small>
+                <PrimevueMessage
+                  v-if="$form.email?.invalid"
+                  severity="error"
+                  size="small"
+                  variant="simple"
+                >
+                  {{ $form.email?.error.message }}
+                </primevuemessage>
               </div>
             </div>
 
@@ -68,13 +78,14 @@
                 for="subject"
                 class="block text-sm font-medium text-slate-300 mb-2"
               >
-                Subject
+                Subject <span class="text-red-400">*</span>
               </label>
               <PrimevueInputText
                 id="subject"
-                v-model="form.subject"
+                class="bg-slate-800/50 border-slate-700 text-slate-50 placeholder-slate-400 focus:border-primary-400 focus:shadow-lg focus:shadow-primary-400/20"
                 placeholder="Project inquiry, collaboration, etc."
                 fluid
+                required
               />
             </div>
 
@@ -83,22 +94,24 @@
                 for="message"
                 class="block text-sm font-medium text-slate-300 mb-2"
               >
-                Message *
+                Message <span class="text-red-400">*</span>
               </label>
               <PrimevueTextarea
                 id="message"
-                v-model="form.message"
                 placeholder="Tell me about your project, timeline, and requirements..."
                 rows="6"
-                class="resize-none"
+                class="bg-slate-800/50 border-slate-700 text-slate-50 placeholder-slate-400 focus:border-primary-400 focus:shadow-lg focus:shadow-primary-400/20 resize-none"
                 fluid
-                :class="{ 'p-invalid': errors.message }"
                 required
               />
-              <small
-                v-if="errors.message"
-                class="text-red-400 mt-1 block"
-              >{{ errors.message }}</small>
+              <PrimevueMessage
+                v-if="$form.message?.invalid"
+                severity="error"
+                size="small"
+                variant="simple"
+              >
+                {{ $form.message?.error.message }}
+              </primevuemessage>
             </div>
 
             <PrimevueButton
@@ -106,13 +119,13 @@
               :label="isSubmitting ? 'Sending...' : 'Send Message'"
               :loading="isSubmitting"
               :disabled="isSubmitting"
-              class="w-full md:w-auto px-8 py-3 bg-gradient-to-r from-primary-400 to-blue-500 hover:from-primary-500 hover:to-blue-600 border-0 font-semibold"
+              fluid
+              class="md:w-auto px-8 py-3 bg-linear-to-r from-primary-300 to-primary-400 hover:from-primary-500 hover:to-primary-600 border-0 font-semibold text-slate-200"
               icon="pi pi-send"
             />
-          </form>
+          </PrimevueForm>
         </div>
 
-        <!-- Direct Contact Info -->
         <div class="space-y-8 lg:pl-8">
           <div>
             <h3 class="text-2xl font-bold text-slate-50 mb-6">
@@ -124,13 +137,12 @@
             </p>
           </div>
 
-          <!-- Contact Methods -->
           <div class="space-y-6">
             <a
               href="mailto:laurencetroyv@gmail.com"
               class="flex items-center gap-4 p-4 bg-slate-800/50 rounded-2xl hover:bg-slate-800 transition-colors duration-300 group"
             >
-              <div class="w-12 h-12 bg-gradient-to-r from-red-500 to-orange-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <div class="w-12 h-12 bg-linear-to-r from-red-500 to-orange-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <i class="pi pi-envelope text-white text-xl" />
               </div>
               <div>
@@ -145,7 +157,7 @@
               rel="noopener noreferrer"
               class="flex items-center gap-4 p-4 bg-slate-800/50 rounded-2xl hover:bg-slate-800 transition-colors duration-300 group"
             >
-              <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <div class="w-12 h-12 bg-linear-to-r from-blue-600 to-blue-700 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <i class="pi pi-linkedin text-white text-xl" />
               </div>
               <div>
@@ -155,7 +167,7 @@
             </a>
 
             <div class="flex items-center gap-4 p-4 bg-slate-800/50 rounded-2xl">
-              <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center">
+              <div class="w-12 h-12 bg-linear-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center">
                 <i class="pi pi-map-marker text-white text-xl" />
               </div>
               <div>
@@ -169,7 +181,6 @@
             </div>
           </div>
 
-          <!-- Resume Download -->
           <div class="pt-6 border-t border-slate-800">
             <h4 class="font-semibold text-slate-50 mb-4">
               Download My Resume
@@ -178,20 +189,19 @@
               <PrimevueButton
                 label="Download PDF"
                 icon="pi pi-download"
-                class="p-button-outlined border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white"
+                class="p-button-outlined border-primary-300 text-primary-300 hover:bg-primary-400 hover:text-white"
                 @click="downloadResume"
               />
               <PrimevueButton
                 label="View Online"
                 icon="pi pi-external-link"
-                class="p-button-text text-slate-400 hover:text-purple-400"
+                class="p-button-text text-slate-400 hover:text-primary-300"
                 @click="viewResume"
               />
             </div>
           </div>
 
-          <!-- Availability Status -->
-          <div class="bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-2xl p-6">
+          <div class="bg-linear-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-2xl p-6">
             <div class="flex items-center gap-3 mb-2">
               <span class="w-3 h-3 bg-green-400 rounded-full animate-pulse" />
               <h4 class="font-semibold text-green-400">
@@ -206,98 +216,73 @@
       </div>
     </div>
 
-    <!-- Footer Bottom -->
     <div class="border-t border-slate-800 py-8">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row items-center justify-between gap-4">
           <div class="flex items-center gap-4">
-            <span class="text-2xl font-bold text-purple-300 font-meow">laurencetroyv</span>
+            <span class="text-2xl font-bold text-primary-300 font-meow">laurencetroyv</span>
             <span class="text-slate-500">|</span>
             <p class="text-slate-400 text-sm">
-              © 2024-{{ currentYear }} Laurence Troy V. All rights reserved.
+              © 2024-{{ currentYear }} All rights reserved.
             </p>
           </div>
 
           <div class="flex items-center gap-4">
-            <a
+            <NuxtLink
               href="mailto:laurencetroyv@gmail.com"
-              class="text-slate-400 hover:text-purple-400 transition-colors duration-200"
+              class="text-slate-400 hover:text-primary-300 transition-colors duration-200"
               aria-label="Email"
             >
               <i class="pi pi-envelope text-lg" />
-            </a>
-            <a
+            </NuxtLink>
+            <NuxtLink
               href="https://linkedin.com/in/laurencetroyv"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-slate-400 hover:text-purple-400 transition-colors duration-200"
+              class="text-slate-400 hover:text-primary-300 transition-colors duration-200"
               aria-label="LinkedIn"
             >
               <i class="pi pi-linkedin text-lg" />
-            </a>
+            </NuxtLink>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </footer>
 </template>
 
 <script setup lang="ts">
-const form = reactive({
+import type { FormSubmitEvent } from "@primevue/forms"
+import z from "zod"
+import { zodResolver } from "@primevue/forms/resolvers/zod"
+
+const schema = z.object({
+  name: z.string().min(3, { error: "Name is required" }),
+  email: z.string().min(3, { error: "Email is required" }),
+  subject: z.string().min(3, { error: "Subject is required" }),
+  message: z.string().min(3, { error: "Message is required" }),
+})
+
+const initialValues = ref({
   name: "",
   email: "",
   subject: "",
-  message: "",
 })
 
-const errors = reactive({
-  name: "",
-  email: "",
-  message: "",
-})
+const resolver = zodResolver(schema)
 
 const isSubmitting = ref(false)
 
 const currentYear = new Date().getFullYear()
 
-const validateForm = () => {
-  // Reset errors
-  Object.keys(errors).forEach(key => errors[key] = "")
-
-  let isValid = true
-
-  if (!form.name.trim()) {
-    errors.name = "Name is required"
-    isValid = false
-  }
-
-  if (!form.email.trim()) {
-    errors.email = "Email is required"
-    isValid = false
-  }
-  else if (!/\S+@\S+\.\S+/.test(form.email)) {
-    errors.email = "Please enter a valid email"
-    isValid = false
-  }
-
-  if (!form.message.trim()) {
-    errors.message = "Message is required"
-    isValid = false
-  }
-
-  return isValid
-}
-
-const submitForm = async () => {
-  if (!validateForm()) return
-
+async function onSubmit(event: FormSubmitEvent) {
   isSubmitting.value = true
 
   try {
     const body = {
-      name: form.name,
-      email: form.email,
-      message: form.message,
+      name: event.states.name!.value,
+      email: event.states.email!.value,
+      message: event.states.message!.value,
     }
 
     const config = useRuntimeConfig()
@@ -310,14 +295,11 @@ const submitForm = async () => {
       },
       body: JSON.stringify({
         ...body,
-        _subject: form.subject,
+        _subject: event.states.subject!.value,
         _template: "table",
         _captcha: "true",
       }),
     })
-
-    // Reset form
-    Object.keys(form).forEach(key => form[key] = "")
   }
   catch (error) {
     console.error("Error submitting form:", error)
@@ -336,29 +318,3 @@ const viewResume = () => {
   window.open("/resume.pdf", "_blank")
 }
 </script>
-
-<style scoped>
-@reference "tailwindcss";
-@reference "tailwindcss-primeui";
-
-/* Custom form styling */
-:deep(.p-inputtext) {
-  @apply bg-slate-800/50 border-slate-700 text-slate-50 placeholder-slate-400;
-}
-
-:deep(.p-inputtext:focus) {
-  @apply border-primary-400 shadow-lg shadow-primary-400/20;
-}
-
-:deep(.p-textarea) {
-  @apply bg-slate-800/50 border-slate-700 text-slate-50 placeholder-slate-400;
-}
-
-:deep(.p-textarea:focus) {
-  @apply border-primary-400 shadow-lg shadow-primary-400/20;
-}
-
-:deep(.p-invalid) {
-  @apply border-red-400;
-}
-</style>
