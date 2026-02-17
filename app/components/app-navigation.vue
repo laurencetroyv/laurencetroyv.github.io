@@ -2,20 +2,19 @@
   <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
-        <div class="flex-shrink-0">
-          <a
-            href="#home"
+        <div class="shrink-0">
+          <NuxtLink
+            to="#home"
             class="text-2xl font-bold text-primary-300 hover:text-primary-200 transition-colors duration-200 font-meow"
             @click="scrollToSection('home')"
           >
             laurencetroyv
-          </a>
+          </NuxtLink>
         </div>
 
-        <!-- Desktop Navigation -->
         <div class="hidden md:block">
           <div class="flex items-center space-x-8">
-            <a
+            <NuxtLink
               v-for="item in navigationItems"
               :key="item.id"
               :href="`#${item.id}`"
@@ -24,11 +23,10 @@
             >
               {{ item.label }}
               <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-400 group-hover:w-full transition-all duration-300" />
-            </a>
+            </NuxtLink>
           </div>
         </div>
 
-        <!-- Mobile menu button -->
         <div class="md:hidden">
           <PrimevueButton
             icon="pi pi-bars"
@@ -39,7 +37,6 @@
       </div>
     </div>
 
-    <!-- Mobile Navigation Sidebar -->
     <PrimevueSidebar
       v-model:visible="mobileMenuOpen"
       position="left"
@@ -47,7 +44,7 @@
     >
       <template #header>
         <div class="flex items-center gap-2">
-          <span class="font-bold text-xl text-primary-300">LTV</span>
+          <span class="font-bold text-xl text-primary-300 font-meow">laurencetroyv</span>
         </div>
       </template>
 
