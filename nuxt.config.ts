@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite"
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 
-  modules: ["@primevue/nuxt-module", "@nuxt/eslint", "@nuxt/image"],
+  modules: ["@primevue/nuxt-module", "@nuxt/eslint", "@nuxt/image", "nuxt-umami"],
   devtools: { enabled: true },
   app: {
     head: {
@@ -25,13 +25,6 @@ export default defineNuxtConfig({
           href: "https://laurencetroyv.dev",
         },
       ],
-      script: [{
-        "src": "https://cloud.umami.is/script.js",
-        "async": true,
-        "defer": true,
-        "data-domains": "laurencetroyv.dev",
-        "data-website-id": process.env.NUXT_UMAMI_WEBSITE_ID,
-      }],
     },
   },
 
@@ -91,5 +84,10 @@ export default defineNuxtConfig({
         },
       },
     },
+  },
+
+  umami: {
+    autoTrack: true,
+    ignoreLocalhost: true,
   },
 })
