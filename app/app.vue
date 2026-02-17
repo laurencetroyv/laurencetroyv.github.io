@@ -1,13 +1,13 @@
 <template>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
+
   <Analytics />
   <SpeedInsights />
-  <NuxtLayout>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
-  </NuxtLayout>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { Analytics } from "@vercel/analytics/nuxt"
 import { SpeedInsights } from "@vercel/speed-insights/nuxt"
 </script>
