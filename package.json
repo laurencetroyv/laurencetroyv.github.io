@@ -11,6 +11,7 @@
     "lint:fix": "eslint ./app --fix"
   },
   "dependencies": {
+    "@nuxt/icon": "2.2.1",
     "@nuxt/image": "2.0.0",
     "@primeuix/themes": "^2.0.3",
     "@primevue/forms": "^4.5.4",
@@ -26,6 +27,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@iconify-json/devicon": "^1.2.58",
     "@nuxt/eslint": "1.15.1",
     "@primevue/nuxt-module": "^4.5.4",
     "eslint": "^10.0.0",
