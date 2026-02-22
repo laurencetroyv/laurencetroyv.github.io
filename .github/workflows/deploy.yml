@@ -15,6 +15,12 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  NUXT_UMAMI_HOST: ${{ secrets.NUXT_UMAMI_HOST }}
+  NUXT_UMAMI_ID: ${{ secrets.NUXT_UMAMI_ID }}
+  NUXT_PUBLIC_FORM_SUBMIT: ${{ secrets.NUXT_PUBLIC_FORM_SUBMIT }}
+  NUXT_IMAGE_DOMAINS: ${{ secrets.NUXT_IMAGE_DOMAINS }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
