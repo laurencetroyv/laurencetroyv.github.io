@@ -4,7 +4,18 @@ import tailwindcss from "@tailwindcss/vite"
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 
-  modules: ["@primevue/nuxt-module", "@nuxt/eslint", "@nuxt/image", "nuxt-umami", "@nuxt/icon"],
+  modules: ["@primevue/nuxt-module", "@nuxt/eslint", "@nuxt/image", "@nuxt/icon", "@nuxt/scripts"],
+
+  $production: {
+    scripts: {
+      registry: {
+        umamiAnalytics: {
+          websiteId: process.env.NUXT_PUBLIC_SCRIPTS_UMAMI_ANALYTICS_WEBSITE_ID,
+          trigger: "onNuxtReady",
+        },
+      },
+    },
+  },
   devtools: { enabled: true },
   app: {
     head: {
@@ -86,10 +97,5 @@ export default defineNuxtConfig({
         },
       },
     },
-  },
-
-  umami: {
-    autoTrack: true,
-    ignoreLocalhost: true,
   },
 })
