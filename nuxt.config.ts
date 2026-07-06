@@ -7,6 +7,7 @@ export default defineNuxtConfig({
   modules: [
     "@nuxt/icon",
     "@nuxt/image",
+    "@nuxtjs/seo",
     "@nuxt/scripts",
     "@primevue/nuxt-module",
   ],
