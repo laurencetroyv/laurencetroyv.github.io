@@ -4,7 +4,12 @@ import tailwindcss from "@tailwindcss/vite"
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 
-  modules: ["@primevue/nuxt-module", "@nuxt/eslint", "@nuxt/image", "@nuxt/icon", "@nuxt/scripts"],
+  modules: [
+    "@nuxt/icon",
+    "@nuxt/image",
+    "@nuxt/scripts",
+    "@primevue/nuxt-module",
+  ],
 
   $production: {
     scripts: {
@@ -16,7 +21,9 @@ export default defineNuxtConfig({
       },
     },
   },
+
   devtools: { enabled: true },
+
   app: {
     head: {
       title: "Laurence Troy V - Full Stack Developer | Mobile App Developer",
@@ -53,12 +60,6 @@ export default defineNuxtConfig({
     plugins: [
       tailwindcss(),
     ],
-  },
-
-  eslint: {
-    config: {
-      stylistic: true,
-    },
   },
 
   primevue: {
