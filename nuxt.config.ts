@@ -3,7 +3,6 @@ import tailwindcss from "@tailwindcss/vite"
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-
   modules: [
     "@nuxt/icon",
     "@nuxt/image",
@@ -31,7 +30,8 @@ export default defineNuxtConfig({
       meta: [
         {
           name: "description",
-          content: "Experienced Full Stack Developer specializing in Vue.js, React, Flutter, and cloud technologies. Based in Cagayan de Oro, Philippines. Available for freelance projects and full-time opportunities.",
+          content:
+            "Experienced Full Stack Developer specializing in Vue.js, React, Flutter, and cloud technologies. Based in Cagayan de Oro, Philippines. Available for freelance projects and full-time opportunities.",
         },
         {
           name: "viewport",
@@ -58,9 +58,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
 
   vite: {
-    plugins: [
-      tailwindcss(),
-    ],
+    plugins: [tailwindcss()],
   },
 
   primevue: {

@@ -66,7 +66,8 @@
         </div>
 
         <div class="absolute -bottom-24 left-1/2 transform -translate-x-1/2">
-          <div
+          <button
+            type="button"
             class="flex flex-col items-center text-slate-400 hover:text-primary-400 transition-colors duration-300 cursor-pointer"
             @click="scrollToSection('overview')"
           >
@@ -74,7 +75,7 @@
             <div class="w-6 h-10 border-2 border-current rounded-full flex justify-center">
               <div class="w-1 h-3 bg-current rounded-full mt-2 animate-bounce" />
             </div>
-          </div>
+          </button>
         </div>
       </div>
     </div>
@@ -99,7 +100,9 @@ const yearsOfExperience = computed(() => {
 })
 
 function typeWriter() {
-  const currentText = texts[currentTextIndex.value]!
+  const currentText = texts[currentTextIndex.value]
+
+  if (!currentText) return
 
   if (isDeleting.value) {
     displayedText.value = currentText.substring(0, currentIndex.value - 1)

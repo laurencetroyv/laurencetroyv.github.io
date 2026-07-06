@@ -45,7 +45,7 @@
                   variant="simple"
                 >
                   {{ $form.name?.error.message }}
-                </primevuemessage>
+                </PrimevueMessage>
               </div>
 
               <div>
@@ -71,7 +71,7 @@
                   variant="simple"
                 >
                   {{ $form.email?.error.message }}
-                </primevuemessage>
+                </PrimevueMessage>
               </div>
             </div>
 
@@ -115,7 +115,7 @@
                 variant="simple"
               >
                 {{ $form.message?.error.message }}
-              </primevuemessage>
+              </PrimevueMessage>
             </div>
 
             <PrimevueButton
@@ -257,8 +257,8 @@
 
 <script setup lang="ts">
 import type { FormSubmitEvent } from "@primevue/forms"
-import z from "zod"
 import { zodResolver } from "@primevue/forms/resolvers/zod"
+import z from "zod"
 
 const schema = z.object({
   name: z.string().min(3, { error: "Name is required" }),
@@ -285,9 +285,9 @@ async function onSubmit(event: FormSubmitEvent) {
 
   try {
     const body = {
-      name: event.states.name!.value,
-      email: event.states.email!.value,
-      message: event.states.message!.value,
+      name: event.states.name?.value,
+      email: event.states.email?.value,
+      message: event.states.message?.value,
     }
 
     const config = useRuntimeConfig()
@@ -300,7 +300,7 @@ async function onSubmit(event: FormSubmitEvent) {
       },
       body: JSON.stringify({
         ...body,
-        _subject: event.states.subject!.value,
+        _subject: event.states.subject?.value,
         _template: "table",
         _captcha: "true",
       }),

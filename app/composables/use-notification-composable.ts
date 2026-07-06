@@ -3,7 +3,10 @@ import type { ToastMessageOptions } from "primevue"
 function useNotificationComposable() {
   function createNotification(
     title: string,
-    { message = "", severity }: { message?: string, severity: ToastMessageOptions["severity"] },
+    {
+      message = "",
+      severity,
+    }: { message?: string; severity: ToastMessageOptions["severity"] },
   ) {
     const { $toast } = useNuxtApp()
 
