@@ -59,6 +59,16 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: [
+        "@primevue/forms/form",
+        "@primevue/forms/resolvers/zod",
+        "@unhead/schema-org/vue",
+        "@vue/devtools-core",
+        "@vue/devtools-kit",
+        "zod",
+      ],
+    },
   },
 
   primevue: {
