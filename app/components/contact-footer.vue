@@ -1,8 +1,5 @@
 <template>
-  <footer
-    id="contact"
-    class="bg-slate-900 border-t border-slate-800"
-  >
+  <footer id="contact" class="bg-slate-900 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
         <div class="space-y-8">
@@ -11,7 +8,8 @@
               Let's Work Together
             </h2>
             <p class="text-slate-400 text-lg leading-relaxed">
-              Have a project in mind? I'd love to hear about it. Send me a message and let's discuss how we can bring your ideas to life.
+              Have a project in mind? I'd love to hear about it. Send me a
+              message and let's discuss how we can bring your ideas to life.
             </p>
           </div>
 
@@ -132,12 +130,10 @@
 
         <div class="space-y-8 lg:pl-8">
           <div>
-            <h3 class="text-2xl font-bold text-slate-50 mb-6">
-              Get In Touch
-            </h3>
+            <h3 class="text-2xl font-bold text-slate-50 mb-6">Get In Touch</h3>
             <p class="text-slate-400 leading-relaxed mb-8">
-              Prefer to reach out directly? You can find me on these platforms or send me an email.
-              I typically respond within 24 hours.
+              Prefer to reach out directly? You can find me on these platforms
+              or send me an email. I typically respond within 24 hours.
             </p>
           </div>
 
@@ -146,7 +142,9 @@
               href="mailto:laurencetroyv@gmail.com"
               class="flex items-center gap-4 p-4 bg-slate-800/50 rounded-2xl hover:bg-slate-800 transition-colors duration-300 group"
             >
-              <div class="w-12 h-12 bg-linear-to-r from-red-500 to-orange-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <div
+                class="w-12 h-12 bg-linear-to-r from-red-500 to-orange-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+              >
                 <i class="pi pi-envelope text-white text-xl" />
               </div>
               <div>
@@ -161,23 +159,29 @@
               rel="noopener noreferrer"
               class="flex items-center gap-4 p-4 bg-slate-800/50 rounded-2xl hover:bg-slate-800 transition-colors duration-300 group"
             >
-              <div class="w-12 h-12 bg-linear-to-r from-blue-600 to-blue-700 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <div
+                class="w-12 h-12 bg-linear-to-r from-blue-600 to-blue-700 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+              >
                 <i class="pi pi-linkedin text-white text-xl" />
               </div>
               <div>
                 <h4 class="font-semibold text-slate-50">LinkedIn</h4>
-                <p class="text-slate-400 text-sm">Connect with me professionally</p>
+                <p class="text-slate-400 text-sm">
+                  Connect with me professionally
+                </p>
               </div>
             </a>
 
-            <div class="flex items-center gap-4 p-4 bg-slate-800/50 rounded-2xl">
-              <div class="w-12 h-12 bg-linear-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center">
+            <div
+              class="flex items-center gap-4 p-4 bg-slate-800/50 rounded-2xl"
+            >
+              <div
+                class="w-12 h-12 bg-linear-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center"
+              >
                 <i class="pi pi-map-marker text-white text-xl" />
               </div>
               <div>
-                <h4 class="font-semibold text-slate-50">
-                  Location
-                </h4>
+                <h4 class="font-semibold text-slate-50">Location</h4>
                 <p class="text-slate-400 text-sm">
                   Cagayan de Oro, Northern Mindanao, Philippines
                 </p>
@@ -186,9 +190,7 @@
           </div>
 
           <div class="pt-6 border-t border-slate-800">
-            <h4 class="font-semibold text-slate-50 mb-4">
-              Download My Resume
-            </h4>
+            <h4 class="font-semibold text-slate-50 mb-4">Download My Resume</h4>
             <div class="flex flex-col sm:flex-row gap-3">
               <PrimevueButton
                 label="Download PDF"
@@ -205,15 +207,16 @@
             </div>
           </div>
 
-          <div class="bg-linear-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-2xl p-6">
+          <div
+            class="bg-linear-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-2xl p-6"
+          >
             <div class="flex items-center gap-3 mb-2">
               <span class="w-3 h-3 bg-green-400 rounded-full animate-pulse" />
-              <h4 class="font-semibold text-green-400">
-                Currently Available
-              </h4>
+              <h4 class="font-semibold text-green-400">Currently Available</h4>
             </div>
             <p class="text-slate-300 text-sm">
-              Open to new opportunities and exciting projects. Let's discuss how I can help bring your vision to life!
+              Open to new opportunities and exciting projects. Let's discuss how
+              I can help bring your vision to life!
             </p>
           </div>
         </div>
@@ -221,10 +224,17 @@
     </div>
 
     <div class="border-t border-slate-800 py-8">
+      <div class="text-center">
+        <p ref="footer">{{ footer }} aaa</p>
+      </div>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div
+          class="flex flex-col md:flex-row items-center justify-between gap-4"
+        >
           <div class="flex items-center gap-4">
-            <span class="text-2xl font-bold text-primary-300 font-meow">laurencetroyv</span>
+            <span class="text-2xl font-bold text-primary-300 font-meow"
+              >laurencetroyv</span
+            >
             <span class="text-slate-500">|</span>
             <p class="text-slate-400 text-sm">
               © 2024-{{ currentYear }} All rights reserved.
@@ -256,47 +266,51 @@
 </template>
 
 <script setup lang="ts">
-import type { FormSubmitEvent } from "@primevue/forms"
-import { zodResolver } from "@primevue/forms/resolvers/zod"
-import z from "zod"
+import figlet from "figlet";
+import type { FormSubmitEvent } from "@primevue/forms";
+import { zodResolver } from "@primevue/forms/resolvers/zod";
+import bigMoney from "figlet/fonts/Big Money-sw";
+import z from "zod";
+
+const footer = ref<HTMLParagraphElement>();
 
 const schema = z.object({
   name: z.string().min(3, { error: "Name is required" }),
   email: z.string().min(3, { error: "Email is required" }),
   subject: z.string().min(3, { error: "Subject is required" }),
   message: z.string().min(3, { error: "Message is required" }),
-})
+});
 
 const initialValues = ref({
   name: "",
   email: "",
   subject: "",
   message: "",
-})
+});
 
-const resolver = zodResolver(schema)
+const resolver = zodResolver(schema);
 
-const isSubmitting = ref(false)
+const isSubmitting = ref(false);
 
-const currentYear = new Date().getFullYear()
+const currentYear = new Date().getFullYear();
 
 async function onSubmit(event: FormSubmitEvent) {
-  isSubmitting.value = true
+  isSubmitting.value = true;
 
   try {
     const body = {
       name: event.states.name?.value,
       email: event.states.email?.value,
       message: event.states.message?.value,
-    }
+    };
 
-    const config = useRuntimeConfig()
+    const config = useRuntimeConfig();
 
     await $fetch(config.public.formSubmit, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
+        Accept: "application/json",
       },
       body: JSON.stringify({
         ...body,
@@ -304,16 +318,29 @@ async function onSubmit(event: FormSubmitEvent) {
         _template: "table",
         _captcha: "true",
       }),
-    })
+    });
 
-    notifySuccess("Form submit successfully")
-  }
-  catch (error) {
-    console.error("Error submitting form:", error)
-    notifyError("Error submitting form", "Sorry, there was an error sending your message. Please try again or email me directly.")
-  }
-  finally {
-    isSubmitting.value = false
+    notifySuccess("Form submit successfully");
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    notifyError(
+      "Error submitting form",
+      "Sorry, there was an error sending your message. Please try again or email me directly.",
+    );
+  } finally {
+    isSubmitting.value = false;
   }
 }
+
+onMounted(async () => {
+  figlet.parseFont("Big Money-sw", bigMoney);
+  const fig = await figlet.text("laurencetroyv", {
+    font: "Big Money-sw",
+  });
+  if (footer.value) {
+    footer.value.innerHTML = fig;
+  }
+  // console.log(fig);
+  // footer.value = fig;
+});
 </script>
